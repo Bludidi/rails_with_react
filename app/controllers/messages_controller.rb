@@ -1,6 +1,14 @@
 class MessagesController < ApplicationController
-  def random
-    greetings = Message.order("RANDOM()").first
-    render json: { greeting: greetings.greeting }
+  def greeting
+    greetings = [
+      'Hello',
+      'Sawubona',
+      'Mholweni',
+      'Bonjour',
+      'Hola'
+    ]
+
+    @greeting = greetings.sample
+    render :greeting
   end
 end
