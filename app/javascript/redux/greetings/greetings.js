@@ -17,7 +17,9 @@ const greetingSlice = createSlice({
   name: 'greetingText',
   initialState,
   extraReducers: (builder) => {
-    builder.addCase(randomGreeting.fulfilled, (state, action) => {
+    builder.addCase(randomGreeting.pending, (state) => {
+      state.load = true;
+    }).addCase(randomGreeting.fulfilled, (state, action) => {
       state.load = false;
       state.greeting = action.payload;
     }).addCase(randomGreeting.rejected, (state, action) => {
